@@ -1,0 +1,17 @@
+import type ;
+import generators ;
+
+type.register Y : y ;
+
+generators.register-standard lemon.lemon : Y : C H ;
+
+actions lemon
+{
+    ./lemon -s $(>)
+
+    x=$(>)
+    mv ${x%.*}.c $(<)
+
+    y=$(<)
+    mv ${x%.*}.h ${y%.*}.h
+}
